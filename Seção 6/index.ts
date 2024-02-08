@@ -128,3 +128,59 @@ const humanWithGun: HumanWithGun = {
     type: 'Revolver',
     caliber: 22
 }
+
+/**
+ * Readonly para Arrays.... 
+ */
+//Aqui definimos a tipagem do array, como sendo readonly do tipo 'string'...
+let myArray: ReadonlyArray<string> = ["Maçã", "Laranja", "Banana"];
+
+// myArray[3] = "Mamão"; //Não permite....
+
+console.log(myArray);
+
+myArray.forEach((item) => {
+    /**
+     * Permitiria a alteração....
+     */
+    console.log(item);
+});
+
+myArray = myArray.map((item) => {
+    return `Fruta: ${item}`; //Permite alterar....
+});
+
+console.log(myArray);
+
+
+/**
+ * Utilizando Tuplas...
+ */
+
+type fiveNumbers = [number, number, number, number, number];
+
+const myNumberArray: fiveNumbers = [0, 1, 2, 3, 4] //Tipamos nosso array, tipando cada um dos itens dele...
+
+console.log(myNumberArray);
+
+type nameAndAge = [string, number];
+
+const anotherUser: nameAndAge = ["Marcos", 21];
+
+console.log(anotherUser[0]);
+
+anotherUser[0] = "Marco";
+
+// anotherUser[1] = "teste"; //Não permite, pos o tipo não corresponde
+
+/**
+ * Tuplas com Readonly
+ * 
+ * Limita o numero de itens, o tipo e não são modificáveis
+ */
+
+function showNumbers(numbers: readonly [number, number]){
+    // numbers[0] = 10; //Não permite....
+    console.log(numbers[0]);
+    console.log(numbers[1]);
+}
